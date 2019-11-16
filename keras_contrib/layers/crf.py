@@ -289,6 +289,8 @@ class CRF(Layer):
             assert K.ndim(mask) == 2, 'Input mask to CRF must have dim 2 if not None'
 
         if self.test_mode == 'viterbi':
+            print("In call method.")
+            print(mask)
             test_output = self.viterbi_decoding(X, mask)
         else:
             test_output = self.get_marginal_prob(X, mask)
