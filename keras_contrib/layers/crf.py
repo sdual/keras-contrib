@@ -513,6 +513,8 @@ class CRF(Layer):
         constants = [chain_energy]
 
         if mask is not None:
+            if K.dtype(mask) != K.floatx():
+                mask = K.cast(mask, K.floatx())
             mask2 = K.cast(K.concatenate([mask, K.zeros_like(mask[:, :1])], axis=1),
                            K.floatx())
             constants.append(mask2)
