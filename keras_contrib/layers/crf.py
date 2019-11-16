@@ -512,6 +512,8 @@ class CRF(Layer):
         initial_states = [prev_target_val, K.zeros_like(prev_target_val[:, :1])]
         constants = [chain_energy]
 
+        print('In recursion method.')
+        print(mask[:, :1])
         if mask is not None:
             mask2 = K.cast(K.concatenate([mask, K.zeros_like(mask[:, :1])], axis=1),
                            K.floatx())
